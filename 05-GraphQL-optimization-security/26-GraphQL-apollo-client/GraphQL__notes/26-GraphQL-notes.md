@@ -1,0 +1,20 @@
+# GraphQL
+
+GraphQL is a Facebook created querying language which allows us to ask for data from our backends. Generally speaking, it's actually very simple when it comes to the actual top level view of GraphQL. The part where it gets a little complicated is getting used to the syntax of GraphQL. But first, let's start with the high level concept of how GraphQL works and then how your frontend will interact with a GraphQL backend.
+
+Most backends have **routes or endpoints** that are exposed, that allow us to make requests to these routes or end points. When our front end makes a request to one of these endpoints (e.g. a GET request to /products), we will get back a response from that endpoint for a list of products. These products will usually come in the format that the back end has them stored in. Generally speaking, when the backend sends back the response, it sends back whatever data the back endot wants to send back --> the backend determines what is inside of the data that you are requesting.
+
+NB this is where GraphQL is different --> instead of having multiple endpoints to which you can send requests to, it has only one endpoint, i.e. the graphql endpoint (i.e. /graphql) --> with this endpoint, your frontend makes a **request in the form of an object** (you can see it as a GraphQL object or as a query) --> so NB the frontend is going to send a request, a blob that has all the rules of what it wants from the GraphQL backend.
+
+So if we want to query some data, we will send a **query request** and the query request will hold the shape of what looks like an object, where we'll define what we're looking for.
+
+You from the frontend can, in this sense, be the one that dictates what kind of data you want from the back end, what shape you want from it, how you want it.
+
+# GraphQL as a replacement for Redux
+GraphQL is actually a replacement for Redux --> it is very rare that you will utilize both GraphQL and Redux. The reason is that GraphQL has its own way of keeping track of the data and typically speaking, GraphQL data querying kind of runs in conflict with Redux.
+
+# GraphQL vs. Redux
+So now that we've understood how to work with Apollo and GraphQL, let's talk about the advantages and disadvantages and why you as a developer or as a team may want a GraphQL and Apollo React application versus a Redux React application.
+
+1. Redux vs. GraphQL & Apollo --> Apollo seeks to act as a single source of truth for the data and state on your application, the same way that Redux does, where essentially the whole idea is that all of your application state of the data that you're fetching is stored in Redux. As we notice with the caching and the actual fetching, this is exactly what Apollo is trying to do as well. As a result, an application that uses Apollo does not need redux when it comes to more minutia, details such as what we did with context --> You can still keep context and utilize context in order to make some of these storage options, or in order to use context as a mounter to make the initial call in the first place at the top level --> but now the single source of truth is Apollo, not Redux
+2. Advantages & Disadvantages --> Apollo & GraphQL in order for you on the frontend to use GraphQL, your backend must be set up similarly to spit out GraphQL, it must support GraphQL --> and this requires a lot of work in order to set up all of these queries and all of these type definitions and everything in between --> there is a lot of code to update on a server in order for it to be a GraphQL server --> the advantage is that it becomes much more transparent for us on the frontend --> But the disadvantage is that this requires a constant coordination of the backend team in order to set up the back end to give us all of these benefits and perks. --> The large bulk of the complexity actually lives in the back end of setting up GraphQL servers. So that's one big disadvantage.
